@@ -37,6 +37,8 @@ before_action :set_before, only: [ :edit, :update, :destroy, :show ]
   end
 
 
+
+
 private
 
   def shop_params
