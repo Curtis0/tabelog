@@ -1,3 +1,4 @@
+
 <h1>New Restaurant</h1>
 
 <%= form_for @shop do |f| %>
@@ -6,9 +7,19 @@
     <%= f.label :name, "Shop Name" %><br>
     <%= f.text_field :name, class: "form-control" %>
   </div>
-
-
-
+  <div class="form-group">
+    <%= f.label :phone_number, "Phone Number" %><br>
+    <%= f.text_field :phone_number, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address, "Address" %><br>
+    <%= f.text_field :address, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :shop_url, "Homepage URL" %><br>
+    <%= f.text_field :shop_url, class: "form-control" %>
+  </div>
+  <%= f.submit 'Add to Library', class: "btn btn-default" %>
 
 <% end %>
 
