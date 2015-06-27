@@ -1,5 +1,6 @@
 class ShopsController < ApplicationController
 before_action :set_before, only: [ :edit, :update, :destroy, :show ]
+
   def index
     @shop = Shop.new
   end
@@ -20,7 +21,16 @@ before_action :set_before, only: [ :edit, :update, :destroy, :show ]
   def show
   end
 
+  def edit
+  end
 
+  def update
+    if @shop.update(shop_params)
+      redirect_to @shop
+    else
+      render 'edit'
+    end
+  end
 
   def set_before
     @shop = Shop.find(params[:id])
