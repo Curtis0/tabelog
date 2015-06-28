@@ -1,13 +1,48 @@
 <%= render partial: 'layouts/header' %>
 
+<p id="notice"><%= notice %></p>
+
 <div class="row">
   <div class="col-lg-12">
-    <h1><%= @shop.name %></h1>
-      <div class="col-lg-12 col-lg-offset-2">
-        <h3><%= @shop.phone_number %></h3>
-      </div>
+    <div class="col-lg-4">
+      <h1><%= @shop.name %>
+      <%= @shop.phone_number %></h1>
 
-      <%= @review.score %>
+      <hr>
+
+
+
+      <hr>
+
+      <h2>All Reviews</h2>
+
+      <% @shop.reviews.each do |review| %>
+
+        <p>
+          <%= review.body %> <br>
+          by <%= review.user.email %>
+        </p>
+
+      <% end %>
+
+      <hr>
+
+      <h2>All Review Users</h2>
+
+      <% @shop.users.each do |user| %>
+
+        <p>
+          <%= user.email %>
+        </p>
+
+      <% end %>
+
+
+
+
+  </div>
+</div>
+
 
 
 
@@ -26,8 +61,21 @@ def average
 
 
 
+<p>
+        <strong>Shop Name:</strong>
+        <%= @shop.name %>
+      </p>
 
-      <h3><%= @shop.address %></h3>
-      <h3><%= @shop.shop_url %></h3>
+      <p>
+        <strong>Phone Number:</strong>
+        <%= @shop.phone_number %>
+      </p>
 
-<%= link_to 'Edit', edit_shop_path %>
+      <p>
+        <strong>Address:</strong>
+        <%= @shop.address %>
+      </p>
+
+      <%= link_to 'Edit', edit_shop_path(@shop) %> |
+      <%= link_to 'Back', shops_path %> |
+      <%= link_to 'Review', new_shop_review_path(@shop) %>
