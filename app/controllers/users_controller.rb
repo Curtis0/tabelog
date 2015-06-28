@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action set_before: only: [ :create, :update, :destroy, :show ]
+  before_action :set_before, only: [ :create, :update, :destroy, :show ]
 
   def edit
   end
