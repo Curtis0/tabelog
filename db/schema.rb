@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627232049) do
+ActiveRecord::Schema.define(version: 20150628081809) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "score"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150627232049) do
     t.integer  "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "title"
   end
 
   add_index "reviews", ["shop_id"], name: "index_reviews_on_shop_id"
@@ -49,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150627232049) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "user_name"
+    t.string   "address"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

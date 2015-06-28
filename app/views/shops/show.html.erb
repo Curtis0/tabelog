@@ -9,7 +9,7 @@
       <%= @shop.phone_number %></h1>
 
       <hr>
-
+        <h1><%= @shop.reviews.average(:score) %></h1>
         <%#= @shop.reviews.score where score is undefined. %>
         <%= link_to "Post a Review", new_shop_review_path(@shop), class: "btn btn-default" %>
 
@@ -19,17 +19,48 @@
 
       <% @shop.reviews.each do |review| %>
 
-        <p>
-          <%= review.body %> <br>
-          by <%= review.user.email %>
-        </p>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Review title goes here</h3>
+        </div>
 
+        <div class="panel-body">
+
+
+          <%= review.user.email %>
+          <hr>
+          <%= review.score %>
+          <hr>
+          <%= review.body %>
+
+        </div>
+
+        <div class="panel-footer">If you find this review to be in interference with our site rules, you can file a complaint.
+        <%= link_to 'File a Complaint', shop_path %>
+        </div>
+      </div>
       <% end %>
 
       <hr>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Shop Information</h3>
+          </div>
 
-      <h2>All Review Users</h2>
+        <div class="panel-body">
+          <table>
+            <tr>
+              <td><%= @shop.name %></td>
+              <td><%= @shop.phone_number %></td>
+              <td><%= @shop.address %></td>
+              <td><%= @shop.shop_url %></td>
+            </tr>
+          </table>
+        </div>
 
+        <div class="panel-footer">If you find this review to be in interference with our site rules, you can file a complaint.
+        <%= link_to 'File a Complaint', shop_path %></div>
+      </div>
       <% @shop.users.each do |user| %>
 
         <p>

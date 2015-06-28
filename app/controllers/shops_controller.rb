@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-before_action :set_before, only: [ :edit, :update, :destroy, :show ]
+before_action :set_before, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @shop = Shop.new
@@ -19,6 +19,8 @@ before_action :set_before, only: [ :edit, :update, :destroy, :show ]
   end
 
   def show
+    #@user = User.find(params[:user_id])
+    #@review = Review.find(params[:review_id])
   end
 
   def edit

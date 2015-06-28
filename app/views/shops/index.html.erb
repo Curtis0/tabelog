@@ -1,7 +1,9 @@
 <%= render partial: 'layouts/header' %>
-<%= yield %>
 
-<h1>Hi everyone!</h1>
+<%= yield %>
+<p id="notice"><%= notice %></p>
+
+<h1>Restaurants</h1>
 
 <%= @shop.reviews.each do |shop| %>
 
