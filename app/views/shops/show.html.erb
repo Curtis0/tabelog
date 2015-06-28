@@ -1,8 +1,33 @@
 <%= render partial: 'layouts/header' %>
 
-<h1><%= @shop.name %></h1>
-<h3><%= @shop.phone_number %></h3>
-<h3><%= @shop.address %></h3>
-<h3><%= @shop.shop_url %></h3>
+<div class="row">
+  <div class="col-lg-12">
+    <h1><%= @shop.name %></h1>
+      <div class="col-lg-12 col-lg-offset-2">
+        <h3><%= @shop.phone_number %></h3>
+      </div>
+
+      <%= @review.score %>
+
+
+
+<!-- in reviews controller put -
+def average
+  @score = Review.score.all
+
+  Search in google how to sum up score totals.
+  Search in goodle how to limit each user to only one review per shop.
+  Search in google how to add minimum and amximum to
+-->
+
+
+
+
+
+
+
+
+      <h3><%= @shop.address %></h3>
+      <h3><%= @shop.shop_url %></h3>
 
 <%= link_to 'Edit', edit_shop_path %>

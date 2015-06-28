@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627093354) do
+ActiveRecord::Schema.define(version: 20150627232049) do
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "score"
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reviews", ["shop_id"], name: "index_reviews_on_shop_id"
+  add_index "reviews", ["user_id", "shop_id"], name: "index_reviews_on_user_id_and_shop_id", unique: true
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "shops", force: :cascade do |t|
     t.string   "name"
