@@ -5,93 +5,68 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="col-lg-4">
-      <h1><%= @shop.name %>
-      <%= @shop.phone_number %></h1>
+      <h1><%= @shop.name %><%= @shop.phone_number %></h1>
+
+      <%# Need to fix above to look good %>
 
       <hr>
         <h1><%= @shop.reviews.average(:score) %></h1>
+
         <%#= @shop.reviews.score where score is undefined. %>
+
         <%= link_to "Post a Review", new_shop_review_path(@shop), class: "btn btn-default" %>
-
       <hr>
-
-      <h2>All Reviews</h2>
-
-      <% @shop.reviews.each do |review| %>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Review title goes here</h3>
+        <h2>All Reviews</h2>
+        <% @shop.reviews.each do |review| %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Review title goes here</h3>
+          </div>
+          <div class="panel-body">
+            <%= review.user.email %>
+            <hr>
+            <%= review.score %>
+            <hr>
+            <%= review.body %>
+          </div>
+          <div class="panel-footer">If you find this review to be in interference with our site rules, you can file a complaint.
+          <%= link_to 'File a Complaint', shop_path %>
+          </div>
         </div>
-
-        <div class="panel-body">
-
-
-          <%= review.user.email %>
-          <hr>
-          <%= review.score %>
-          <hr>
-          <%= review.body %>
-
-        </div>
-
-        <div class="panel-footer">If you find this review to be in interference with our site rules, you can file a complaint.
-        <%= link_to 'File a Complaint', shop_path %>
-        </div>
-      </div>
-      <% end %>
-
+        <% end %>
       <hr>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">Shop Information</h3>
           </div>
-
-        <div class="panel-body">
-          <table>
-            <tr>
-              <td><%= @shop.name %></td>
-              <td><%= @shop.phone_number %></td>
-              <td><%= @shop.address %></td>
-              <td><%= @shop.shop_url %></td>
-            </tr>
-          </table>
+          <div class="panel-body">
+            <table>
+              <tr>
+                <td><%= @shop.name %></td>
+                <td><%= @shop.phone_number %></td>
+                <td><%= @shop.address %></td>
+                <td><%= @shop.shop_url %></td>
+              </tr>
+            </table>
+          </div>
+          <div class="panel-footer">If you find this review to be in interference with our site rules, you can file a complaint.
+          <%= link_to 'File a Complaint', shop_path %></div>
         </div>
-
-        <div class="panel-footer">If you find this review to be in interference with our site rules, you can file a complaint.
-        <%= link_to 'File a Complaint', shop_path %></div>
-      </div>
-      <% @shop.users.each do |user| %>
-
+        <% @shop.users.each do |user| %>
         <p>
           <%= user.email %>
         </p>
-
-      <% end %>
-
-
-
-
+        <% end %>
+    </div>
   </div>
 </div>
 
-
-
-
-<!-- in reviews controller put -
-def average
-  @score = Review.score.all
-
-  Search in google how to sum up score totals.
+<!--
+  Learn how to use models.
+  Read 楽しいルビーand other rails good book. Will help to understand more thoroughly the concept and contruct of whqt is going on
   Search in goodle how to limit each user to only one review per shop.
   Search in google how to add minimum and amximum to
 -->
-
-
-
-
-
-
 
 <p>
         <strong>Shop Name:</strong>

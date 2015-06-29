@@ -5,8 +5,16 @@
 
 <h1>Restaurants</h1>
 
-<%= @shop.reviews.each do |review| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Review title goes here</h3>
+        </div>
+      <% @shop.reviews.each do |review| %>
+        <div class="panel-body">
+          <%= review.body %>
+          <hr>
+          <%= review.score %>
+        </div>
+      </div>
+      <% end %>
 
-<%= review.body %>
-
-<% end %>
